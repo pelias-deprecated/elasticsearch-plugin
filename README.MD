@@ -49,9 +49,11 @@ bin/plugin -url https://github.com/pelias/elasticsearch-plugin/blob/master/pelia
 
 **From source**
 
+Clone the repo and from the repo directory, run:
+
 ```shell
 mvn clean package
-bin/plugin -url file:./target/release/elasticsearch-PeliasPlugin-1.3.4.zip -install pelias-plugin
+path/to/elasticsearch/bin/plugin -url file://path/to/repo/pelias-analysis.zip -install pelias-plugin
 ```
 
 ###Usage
