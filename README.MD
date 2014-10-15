@@ -36,9 +36,18 @@ Our current analysis stack goes like this:
 > ```"Johnson&Johnson" => ["johnson and johnson"] => ["johnson", "and", "johnson"]```
 
 ###Requirements
-There needs to be an ElasticSearch instance running on your server, so we'll assume you have Java installed as well. To package and install the plugin, you need [Maven](http://maven.apache.org/).
+There needs to be an ElasticSearch instance running on your server, so we'll assume you have Java installed as well. To package and install the plugin from source, you need [Maven](http://maven.apache.org/).
 
 ###Installation
+
+**Easy installation**
+In your ES directory:
+
+```shell
+bin/plugin -url https://github.com/pelias/elasticsearch-plugin/blob/master/pelias-analysis.zip?raw=true -install pelias-plugin
+```
+
+**From source**
 
 ```shell
 mvn clean package
