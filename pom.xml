@@ -16,6 +16,12 @@
         <version>2.3</version>
         <configuration>
           <finalName>elasticsearch-${project.name}-${elasticsearch.version}</finalName>
+            <archive>
+                <manifest>
+                    <addClasspath>true</addClasspath>
+                    <mainClass>org.elasticsearch.PeliasPlugin.Installer</mainClass>
+                </manifest>
+            </archive>
         </configuration>
       </plugin>
       <!-- Copy dependencies into lib folder -->
@@ -72,7 +78,8 @@
             </goals>
           </execution>
         </executions>
-      </plugin> 
+      </plugin>
+
     </plugins>
     <resources>
       <resource>
