@@ -87,6 +87,7 @@
         <filtering>true</filtering>
         <includes>
           <include>**/*.properties</include>
+          <include>**/*.json</include>
         </includes>
       </resource>
     </resources>
@@ -105,6 +106,11 @@
       <artifactId>elasticsearch</artifactId>
       <version>${elasticsearch.version}</version>
     </dependency>
+      <dependency>
+          <groupId>org.codeartisans</groupId>
+          <artifactId>org.json</artifactId>
+          <version>20131017</version>
+      </dependency>
   </dependencies>
   <repositories>
     <repository>
