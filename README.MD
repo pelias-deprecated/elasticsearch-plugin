@@ -50,13 +50,13 @@ bin/plugin -url file:./target/release/elasticsearch-PeliasPlugin-1.3.4.zip -inst
 Once the plugin is installed, you should restart ES and add the analyzer to your settings mapping, as shown [in the ES site]("http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/analysis-custom-analyzer.html").
 
 ```json
-	"analysis": {
-    	"analyzer": {
-	        "pelias": {
-	          "type": "pelias-analysis"
-	        }
+    "analysis": {
+        "analyzer": {
+	    "pelias": {
+	        "type": "pelias-analysis"
+	    }
+        }
     }
-}
 ```
 
 And try it with Elasticsearch's Analyze API
