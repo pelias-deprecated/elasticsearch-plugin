@@ -1,16 +1,15 @@
 package org.elasticsearch.PeliasPlugin;
 
-import org.apache.commons.io.FileUtils;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Tools {
     public static JSONObject getJSONFromURL(String urlString) throws IOException {
@@ -48,24 +47,6 @@ public class Tools {
         return new String(encoded);
     }
 
-    public static HashMap<String, ArrayList<String>> parseTerms (String path) throws IOException {
-        HashMap<String, ArrayList<String>> synMap = new HashMap<>();
-        JSONArray rootJSONArray = new JSONArray(readFile(path));
-        for (int i = 0; i<rootJSONArray.length(); i++){
-            JSONObject termJSON = rootJSONArray.getJSONObject(i);
-            Term term = new Term(termJSON);
-            if(!synMap.containsKey(term.fullWord)){
-                ArrayList<String> thisList = new ArrayList<String>();
-                thisList.add(term.abbreviation);
-                synMap.put(term.fullWord, thisList);
-            }
-            else{
-                synMap.get(term.fullWord).add(term.abbreviation);
-            }
-        }
-        return synMap;
-    }
-
     public static void cloneRepo() {
         try {
             Process p = Runtime.getRuntime().exec("git clone https://github.com/pelias/abbreviations-gatherer.git");
@@ -87,15 +68,5 @@ public class Tools {
             System.out.println("Connection refused to ES. Have you initialized it? \n");
         }
         return null;
-    }
-
-    public static void storeLocalCopy(String path){
-        try {
-            FileUtils.forceMkdir(new File("analysis/"));
-            FileUtils.copyFile(new File(path+"/config/analysis/synonyms.txt"), new File("analysis/synonyms.txt"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
 }
