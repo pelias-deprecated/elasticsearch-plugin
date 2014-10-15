@@ -53,4 +53,42 @@ public class PeliasAnalyzer extends Analyzer {
 
         return new TokenStreamComponents(source, filter);
     }
+
+    protected SynonymMap.Builder addTerms(JSONObject mappings) {
+        JSONObject termList = mappings.getJSONObject("abbreviationlist");
+        SynonymMap.Builder builder = new SynonymMap.Builder(false);
+        Iterator keys = termList.keys();
+        while(keys.hasNext()){
+            String thisKey = (String) keys.next();
+            JSONObject term = termList.getJSONObject(thisKey);
+            JSONArray abbreviationsList = term.getJSONArray("abbreviations");
+            for(int i = 0; i<abbreviationsList.length(); i++){
+                builder.add(new CharsRef((String) abbreviationsList.get(i)), new CharsRef(thisKey), false);
+            }
+        }
+        return builder;
+    }
+
+    public JSONObject getMappings() throws IOException {
+        String is = new Scanner(getClass().getResourceAsStream("/eng.json"), "UTF-8").useDelimiter("\\A").next();
+        return new JSONObject(is);
+    }
+
+    public void peekStream(TokenStream stream){
+        CharTermAttribute cattr = stream.addAttribute(CharTermAttribute.class);
+        try {
+            stream.reset();
+            ArrayList<String> streamStrings = new ArrayList<String>();
+            while (stream.incrementToken()) {
+                streamStrings.add(cattr.toString());
+            }
+            System.out.println(streamStrings);
+            stream.end();
+            stream.close();
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+
+    }
 }
