@@ -58,7 +58,7 @@ path/to/elasticsearch/bin/plugin -url file://path/to/repo/pelias-analysis.zip -i
 
 ###Usage
 Note: Previously after installing, you would need to follow these additional setup steps. This is not required anymore if using the latest from master but kept here as reference.
-- Once the plugin is installed, you should restart ES and add the analyzer to your settings mapping, as shown [in the ES site]("http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/analysis-custom-analyzer.html").
+- Once the plugin is installed, you should restart ES and add the analyzer to your settings mapping, as shown [in the ES site](http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/analysis-custom-analyzer.html).
 
 ```json
     "analysis": {
