@@ -1,3 +1,13 @@
+# Deprecated
+
+#### This plugin is no longer used in Pelias!!!
+
+If you are following instructions to install this plugin, they are probably old, please open an issue to alert someone to fix them.
+
+This repository will stay around for a few more releases just in case anyone is running an older version of the codebase.
+
+If not already done so by Sept 2015, this repo can be permanetly deleted.
+
 ##Pelias ElasticSearch Plugin
 
 Elasticsearch comes with a wide variety of analyzers that can be used just by specifying them in the Elasticsearch settings file. For our geocoder, however, we need broader control over how search queries and string fields are treated. This means extending the functionality of ElasticSearch by subclassing parts of the library it's based on, Lucene.
